@@ -226,6 +226,13 @@ function EditorSettings() {
     setActiveLogo(media.id);
   }, []);
 
+  const handleUpdateDefaultLogo = useCallback(
+    (media) => {
+      updateSettings({ publisherLogoToMakeDefault: media.id });
+    },
+    [updateSettings]
+  );
+
   const isActiveRemoveLogoDialog = Boolean(
     activeDialog === ACTIVE_DIALOG_REMOVE_LOGO && activeLogo
   );
@@ -265,6 +272,7 @@ function EditorSettings() {
             <PublisherLogoSettings
               handleAddLogos={handleAddLogos}
               handleRemoveLogo={handleRemoveLogo}
+              handleUpdateDefaultLogo={handleUpdateDefaultLogo}
               publisherLogos={orderedPublisherLogos}
               canUploadFiles={canUploadFiles}
               isLoading={isMediaLoading}
