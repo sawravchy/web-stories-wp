@@ -79,6 +79,13 @@ export const HelperText = styled.p`
   color: ${({ theme }) => theme.colors.gray200};
 `;
 
+export const DefaultLogoText = styled.p`
+  ${TypographyPresets.ExtraSmall};
+  margin: 0;
+  color: ${({ theme }) => theme.colors.gray200};
+  width: 100%;
+  text-align: center;
+`;
 export const TextInputHelperText = styled(HelperText)`
   padding-top: 10px;
 `;
@@ -106,6 +113,13 @@ export const UploadedContainer = styled.div`
 
 export const GridItemContainer = styled.div`
   position: relative;
+
+  &:hover,
+  &:focus-within {
+    button {
+      opacity: 1 !important;
+    }
+  }
 `;
 
 export const GridItemButton = styled.button`
@@ -134,9 +148,13 @@ export const Logo = styled.img`
 `;
 
 export const RemoveLogoButton = styled.button`
+  opacity: 1; // ${({ isActive }) => (isActive ? 1 : 0)};
   position: absolute;
-  left: 2px;
-  bottom: 2px;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 24px;
   height: 24px;
   text-align: center;
@@ -148,9 +166,10 @@ export const RemoveLogoButton = styled.button`
   cursor: pointer;
 
   & > svg {
-    padding: 6px;
-    width: 100%;
-    height: 100%;
+    margin: auto;
+    padding: 2px 2px 3px 3px;
+    width: 90%;
+    height: auto;
     display: block;
   }
 
